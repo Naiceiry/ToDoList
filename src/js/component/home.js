@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "../../styles/index.scss";
 import { element } from "prop-types";
-import { Tarea } from "./tarea";
 export function Home() {
 	const [valorimp, setValorimp] = useState("Introduzca Tarea aqui!");
-	const [todos, setTodos] = useState(["Sin Tareas Pendientes"]);
-	const [contar, setContar] = useState([0]);
+	const [todos, setTodos] = useState([""]);
+	const [contar, setContar] = useState(0);
 	const listItems = todos.map((item, index) => (
 		<div className="list" key={index}>
 			{item}
@@ -13,29 +12,35 @@ export function Home() {
 				id="hecho"
 				type="button"
 				className="btn btn-light"
-				onClick={hecho}>
+				onClick={() => hecho(index)}>
 				✔
 			</button>
 			<button
 				id="eliminar"
 				type="button"
 				className="btn btn-light"
-				onClick={eliminar}>
+				onClick={() => eliminar(index)}>
 				⛔
 			</button>
 		</div>
 	));
-	function hecho() {
-		alert("Deberia Tachar");
-	}
-	function eliminar() {
-		alert("Deberia eliminar");
-	}
-	/*const eliminar= todos => {
-        const removearr=[...todos].filter{todos => todos.item !== item}
-        setTodos{removearr}
-		alert("Deberia elmininar");
-	}*/
+	const hecho = indexitem => {
+		const tachar = todos.filter((item, index) => {
+			if (contar > 0) {
+				setContar(contar - 1);
+			}
+			alert("deberia tachar");
+		});
+	};
+	const eliminar = indexitem => {
+		const removearr = todos.filter((item, index) => {
+			if (contar > 0) {
+				setContar(contar - 1);
+			}
+			return index !== indexitem;
+		});
+		setTodos(removearr);
+	};
 	let changeInput = e => {
 		setValorimp(e.target.value);
 	};
@@ -45,7 +50,7 @@ export function Home() {
 				alert("Introduzca Tarea");
 			} else {
 				setTodos([...todos, e.target.value]);
-				setContar([contar + 1]);
+				setContar(contar + 1);
 				setValorimp(" ");
 			}
 		}
