@@ -4,9 +4,12 @@ import { element } from "prop-types";
 export function Home() {
 	const [valorimp, setValorimp] = useState("Introduzca Tarea aqui!");
 	const [todos, setTodos] = useState([""]);
+	const [tachado, setTachado] = useState(false);
 	const [contar, setContar] = useState(0);
 	const listItems = todos.map((item, index) => (
-		<div className="list" key={index}>
+		<div
+			className={tachado === false ? "list" : "list tachado"}
+			key={index}>
 			{item}
 			<button
 				id="hecho"
@@ -24,23 +27,17 @@ export function Home() {
 			</button>
 		</div>
 	));
-	/*let hecho = e => {
-		let value = e.getAttribute("text-decoration");
-		e.value("data-text-decoration", " line-through");
-		if (contar > 0) {
-			setContar(contar - 1);
-		}
-		return value;
-	};
-    setTodos(hecho);*/
-    const hecho = indexitem => {
-		const tachar = todos.filter((item, index) => {
+	const hecho = indexitem => {
+		const tachar = todos.map((item, index) => {
 			if (contar > 0) {
 				setContar(contar - 1);
 			}
-			return index == indexitem;
+			if (index === indexitem) {
+				setTachado(true);
+			}
 		});
-		setTodos(tachar.data.text-decoration:linethrough);
+		//		setTodos(tachar => tachar);
+	};
 	const eliminar = indexitem => {
 		const removearr = todos.filter((item, index) => {
 			if (contar > 0) {
