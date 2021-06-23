@@ -24,14 +24,23 @@ export function Home() {
 			</button>
 		</div>
 	));
-	const hecho = indexitem => {
+	/*let hecho = e => {
+		let value = e.getAttribute("text-decoration");
+		e.value("data-text-decoration", " line-through");
+		if (contar > 0) {
+			setContar(contar - 1);
+		}
+		return value;
+	};
+    setTodos(hecho);*/
+    const hecho = indexitem => {
 		const tachar = todos.filter((item, index) => {
 			if (contar > 0) {
 				setContar(contar - 1);
 			}
-			alert("deberia tachar");
+			return index == indexitem;
 		});
-	};
+		setTodos(tachar.data.text-decoration:linethrough);
 	const eliminar = indexitem => {
 		const removearr = todos.filter((item, index) => {
 			if (contar > 0) {
