@@ -34,6 +34,8 @@ export function Home() {
 			}
 			if (index === indexitem) {
 				setTachado(true);
+			} else {
+				setTachado(false);
 			}
 		});
 		//		setTodos(tachar => tachar);
