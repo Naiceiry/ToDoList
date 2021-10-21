@@ -22,15 +22,6 @@ export function Crossedout(props) {
 			</button>
 		</div>
 	);
-	/* const hecho = indexitem => {
-    const tachar = todos.map((item, index) => {
-        if (index === indexitem) {
-            setTachado(true);
-        } else {
-            setTachado(false);
-        }
-    });
- }*/
 }
 Crossedout.propTypes = {
 	item: PropTypes.string,
