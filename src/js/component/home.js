@@ -10,7 +10,8 @@ export function Home() {
 				key={index}
 				item={item}
 				index={index}
-				eliminar={e => eliminar(e)}></Crossedout>
+				eliminar={e => eliminar(e)}
+				setTachado={e => setTachado(e)}></Crossedout>
 		);
 	});
 	const eliminar = indexitem => {
@@ -18,6 +19,12 @@ export function Home() {
 			return index !== indexitem;
 		});
 		setTodos(removearr);
+	};
+	const setTachado = indexitem => {
+		const tachearr = todos.filter((item, index) => {
+			return index !== indexitem;
+		});
+		setTodos(tachearr);
 	};
 	let changeInput = e => {
 		setValorimp(e.target.value);
