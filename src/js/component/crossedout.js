@@ -10,7 +10,7 @@ export function Crossedout(props) {
 				id="hecho"
 				type="button"
 				className="btn btn-light"
-				onClick={() => props.setTachado(!tachado)}>
+				onClick={() => setTachado(!tachado)}>
 				✔
 			</button>
 			<button
@@ -26,6 +26,5 @@ export function Crossedout(props) {
 Crossedout.propTypes = {
 	item: PropTypes.string,
 	index: PropTypes.number,
-	eliminar: PropTypes.func,
-	setTachado: PropTypes.func
+	eliminar: PropTypes.func
 };
